@@ -1,15 +1,20 @@
+from fastapi import FastAPI
+import uvicorn
 from my_package.services.hello_world_service import HelloWorldService
 
-def main() -> None:
-    """Main entry point of the application."""
-    # Create an instance of HelloWorldService
-    service = HelloWorldService()
-    
-    # Call the say_hello method and store the result
-    message = service.say_hello()
+app = FastAPI()
+service = HelloWorldService()
 
-    # Print the result
-    print(message)
+@app.get("/")
+async def root() -> dict[str, str]:
+    """Root endpoint that returns a hello world message."""
+    return {"message": service.say_hello()}
+
+
+@app.get("/health")
+async def health_check() -> dict[str, str]:
+    """Health check endpoint."""
+    return {"status": "healthy"}
 
 if __name__ == "__main__":
-    main()
+    uvicorn.run(app, host="0.0.0.0", port=8000)

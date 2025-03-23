@@ -1,6 +1,18 @@
 # py-docker-template
 
-Py-docker-template built using uv, which is an extremely fast Python package and project manager, written in Rust. It aims to simplify project setup, streamline dependency management, and promote best practices for Python development
+Py-docker-template built using uv, which is an extremely fast Python package and project manager, written in Rust. It aims to simplify project setup, streamline dependency management, and promote best practices for Python development.
+
+## FastAPI Implementation
+
+This project uses FastAPI, a modern, fast web framework for building APIs with Python. The implementation includes:
+
+- A root endpoint (`/`) that returns a "Hello World" message using a service layer pattern
+- A health check endpoint (`/health`) that returns the API status
+- Automatic API documentation available at `/docs` using Swagger UI
+- Async request handling for improved performance
+- Type hints for better code safety and IDE support
+
+The FastAPI application is configured to run using uvicorn server on port 8000, making it accessible via localhost.
 
 ## Dependencies
 
@@ -40,7 +52,13 @@ uv remove requests
 How to use uv to execute your script?
 ```console
 $ uv run src\services\hello_world_service.py 
-Hello world
+```
+
+APP access
+```console
+Main endpoint: http://localhost:8000/
+Health check: http://localhost:8000/health
+API documentation: http://localhost:8000/docs
 ```
 
 ## Using Ruff and MyPy
