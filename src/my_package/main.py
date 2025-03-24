@@ -1,20 +1,21 @@
 from fastapi import FastAPI
-import uvicorn
-from my_package.services.hello_world_service import HelloWorldService
+from typing import Dict, Union
+from src.my_package.services.hello_world_service import HelloWorldService
 
 app = FastAPI()
 service = HelloWorldService()
 
 @app.get("/")
-async def root() -> dict[str, str]:
+async def root() -> Dict[str, str]:
     """Root endpoint that returns a hello world message."""
-    return {"message": service.say_hello()}
-
+    return {"message tal": service.say_hello()}
 
 @app.get("/health")
-async def health_check() -> dict[str, str]:
+async def health_check() -> Dict[str, str]:
     """Health check endpoint."""
     return {"status": "healthy"}
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+@app.get("/items/{item_id}")
+def read_item(item_id: Union[int, str] = None):
+    return {"item_id": item_id}
+

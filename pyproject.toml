@@ -10,6 +10,7 @@ dependencies = [
     "fastapi>=0.115.11",
     "make>=0.1.6.post2",
     "mypy>=1.14.1",
+    "pip>=25.0.1",
     "pytest>=8.3.5",
     "ruff>=0.8.6",
     "uvicorn>=0.34.0",

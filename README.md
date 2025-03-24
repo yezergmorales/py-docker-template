@@ -34,6 +34,7 @@ uv commands
 # Create a .venv with uv
 # modify pyproject.toml whether is needed
 uv run
+.venv\Scripts\activate (whether activation is needed)
 
 # Update the project’s environment
 uv sync 
@@ -49,10 +50,33 @@ uv add git+https://github.com/psf/requests
 uv remove requests
 ```
 
-How to use uv to execute your script?
+How to execute the APP using docker?
+0. Docker desktop running
+1. Create a requirements.txt in py-docker-template directory
 ```console
-$ uv run src\services\hello_world_service.py 
+$ uv pip list --format=freeze > requirements.txt
 ```
+2. Create Docker defaults inside of py-docker-template directory
+```console
+$ docker init
+? What application platform does your project use? Python
+? What version of Python do you want to use? 3.12.9
+? What port do you want your app to listen on? 8000
+? What is the command to run your app? uvicorn 'src.my_package.main:app' --host=0.0.0.0 --port=8000
+```
+3. Run the application
+```console
+$ docker compose up --build
+$ docker compose up --build -d [Running in the background detached from the terminal]
+# Open a browser and view the application at http://localhost:8000
+```
+3.1 Run the application in the virtual environment
+```console
+$ uvicorn src.my_package.main:app
+# Open a browser and view the application at http://localhost:8000
+```
+4. Tip: Use Dev Containers to develop.
+Make sure devcontainer.json has "remoteUser": "root"
 
 APP access
 ```console
