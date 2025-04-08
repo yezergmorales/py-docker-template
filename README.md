@@ -50,6 +50,13 @@ uv add git+https://github.com/psf/requests
 uv remove requests
 ```
 
+How to execute the APP using venv?
+0. Activate the venv
+1. Run the server
+```console
+uvicorn src.my_package.main:app --reload
+```
+
 How to execute the APP using docker?
 0. Docker desktop running
 1. Create a requirements.txt in py-docker-template directory
@@ -70,7 +77,7 @@ $ docker compose up --build
 $ docker compose up --build -d [Running in the background detached from the terminal]
 # Open a browser and view the application at http://localhost:8000
 ```
-3.1 Run the application in the virtual environment
+3.1 Run the application
 ```console
 $ uvicorn src.my_package.main:app
 # Open a browser and view the application at http://localhost:8000
