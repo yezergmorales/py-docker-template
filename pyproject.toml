@@ -2,7 +2,7 @@
 name = "project_template" #TODO: Update to the project name
 version = "0.1.0"
 description = "Add your description here" #TODO: Update to the project name
-authors = [{ name = "Doramas Baez Bernal", email = "doramas6@hotmail.com" }]
+authors = [{ name = "Yezer Gonzalez", email = "yezergm@gmail.com" }]
 readme = "README.md"
 keywords = ['Python', 'template', 'uv']
 requires-python = ">=3.12.8"
