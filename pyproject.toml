@@ -1,24 +1,19 @@
 [project]
-name = "project_template" #TODO: Update to the project name
+name = "project_template" 
 version = "0.1.0"
 description = "Add your description here" #TODO: Update to the project name
 authors = [{ name = "Yezer Gonzalez", email = "yezergm@gmail.com" }]
 readme = "README.md"
 keywords = ['Python', 'template', 'uv']
-requires-python = ">=3.12.8"
+requires-python = ">=3.12.3,<3.13"
 dependencies = [
     "fastapi>=0.115.11",
-    "make>=0.1.6.post2",
-    "mypy>=1.14.1",
-    "pip>=25.0.1",
-    "pytest>=8.3.5",
     "python-dotenv>=1.1.0",
-    "ruff>=0.8.6",
     "uvicorn>=0.34.0",
 ]
 
 [project.scripts]
-"app" = "project_template:main" #TODO: Update to the project name
+"app" = "project_template:main"
 
 [tool.mypy]
 strict = true
@@ -45,3 +40,10 @@ skip-magic-trailing-comma = false
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = [
+    "mypy>=1.16.1",
+    "pytest>=8.4.1",
+    "ruff>=0.12.1",
+]

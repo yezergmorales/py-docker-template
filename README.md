@@ -63,19 +63,35 @@ How to execute the APP using docker?
 ```console
 $ uv pip list --format=freeze > requirements.txt
 ```
-2. Create Docker defaults inside of py-docker-template directory
+2. Create Docker Image
 ```console
-$ docker init
-? What application platform does your project use? Python
-? What version of Python do you want to use? 3.12.9
-? What port do you want your app to listen on? 8000
-? What is the command to run your app? uvicorn 'src.my_package.main:app' --host=0.0.0.0 --port=8000
+# Build without using cache (clean build)
+docker-compose build --no-cache
 ```
+```console	
+# Build with specific build args
+API_KEY=your-key docker-compose build
+```
+```console
+# Build and then run the container
+docker-compose up --build
+```
+```console
+# Pull latest base images before building
+docker-compose build --pull
+```
+```console
+# docker build
+docker build -t project-template .
+``` 
+
 3. Run the application
 ```console
 $ docker compose up --build
 $ docker compose up --build -d [Running in the background detached from the terminal]
 # Open a browser and view the application at http://localhost:8000
+docker run -it --rm -p 8000:8000 project-template
+
 ```
 3.1 Run the application
 ```console
